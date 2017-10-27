@@ -68,7 +68,25 @@ public class DB_statements {
         }
     }
     // method to insert data
-    public void insertData(){
-        
+    public void insertData(String tableName){
+        // sql query
+        String query = "insert into " + tableName +
+                "(" + "myName, address) " +
+                "values ('Mathias', 'My adress'), " +
+                "('My Po', 'Her Adress'), " +
+                "('Ayy lmao', 'His Adress')";
+       try {
+           // connect
+           stat = con.createStatement();
+           // execute
+           stat.executeUpdate(query);
+           System.out.println("\n--Data inserted into table " + tableName + "--");
+       }
+       catch (SQLException ex)
+       {
+           System.out.println("\n--Doug seriously stop--");
+           ex.printStackTrace();
+       }
     }
+
 }

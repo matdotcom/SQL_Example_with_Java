@@ -6,6 +6,7 @@ public class test {
         DB_statements statements = new DB_statements();
         //statements.createNewDB();
         statements.useDB("ThisDatabase");
-        statements.createTable("MyTable");
+        //statements.createTable("MyTable");
+        statements.insertData("MyTable");
     }
 }
