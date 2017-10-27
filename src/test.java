@@ -7,6 +7,7 @@ public class test {
         //statements.createNewDB();
         statements.useDB("ThisDatabase");
         //statements.createTable("MyTable");
-        statements.insertData("MyTable");
+        //statements.insertData("MyTable");
+        statements.selectFromTable("myTable");
     }
 }

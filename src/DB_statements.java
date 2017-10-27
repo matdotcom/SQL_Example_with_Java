@@ -1,12 +1,16 @@
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DB_statements {
     // Declare a statement
     private static Statement stat = null;
     // Declare a connection
     private static Connection con = DB_connector.connect();
+    // Declare a result set
+    private static ResultSet rs = null;
+
+
+
+
     // Method to create a new Database
     public void createNewDB()
     {
@@ -88,5 +92,31 @@ public class DB_statements {
            ex.printStackTrace();
        }
     }
+    // method to read data from table
+    public void selectFromTable(String tableName){
+        // SQL query
+        String query = "select * from " + tableName;
+        try {
+            //connection
+            stat = con.createStatement();
+            //execute
+            rs = stat.executeQuery(query);
+            System.out.println("\nid\t\tmyName\t\taddress\n__________________________");
+            //get data
+             while(rs.next()){
+                int id = rs.getInt(1); // returns id
+                String myName = rs.getString("myName");//returns myName info
+                String address = rs.getString("address");// returns address info
+                System.out.println(id+"\t\t"+myName+"\t\t"+address);
+
+            }
+        }
+        catch (SQLException ex){
+            System.out.println("\n--Doug PLEASE for FUCKS SAKE--");
+            ex.printStackTrace();
+        }
+
+    }
+
 
 }
